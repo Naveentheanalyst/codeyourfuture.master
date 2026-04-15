@@ -67,6 +67,7 @@ function switchTab(btn, tabId) {
 
 // ─── Hero Canvas: Neural Net + Gradient Descent + Linear Regression + Bayes ─
 (function () {
+    return; // DISABLED
     const canvas = document.getElementById('neural-bg');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
