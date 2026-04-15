@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Data Science Projects | Code Your Future</title>
+    <meta name="description" content="Outsource your data science, analytics, and ML projects to Code Your Future. SQL, Python, Power BI dashboards, predictive models — delivered fast.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero { min-height: 60vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:140px 5% 80px; background: radial-gradient(circle at 50% 0%, rgba(234,255,0,0.06), transparent 60%), var(--bg-color); border-bottom:1px solid var(--border-color); }
+        .page-hero h1 { font-size:3.5rem; font-weight:900; line-height:1.1; margin-bottom:20px; letter-spacing:-2px; }
+        .page-hero p { font-size:1.2rem; color:var(--text-secondary); max-width:600px; margin:0 auto 40px; line-height:1.7; }
+        .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:60px 0; }
+        .service-card { background:var(--card-bg); border:1px solid var(--border-color); border-radius:16px; padding:34px 28px; transition:all 0.3s; }
+        .service-card:hover { border-color:var(--accent); transform:translateY(-5px); }
+        .service-icon { font-size:2.2rem; color:var(--accent); margin-bottom:18px; }
+        .service-card h3 { font-size:1.2rem; font-weight:700; margin-bottom:10px; }
+        .service-card p { font-size:0.9rem; color:var(--text-secondary); line-height:1.7; }
+        .service-card ul { margin-top:14px; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:8px; }
+        .service-card ul li { font-size:0.85rem; color:var(--text-secondary); display:flex; gap:8px; }
+        .service-card ul li::before { content:'›'; color:var(--accent); font-weight:700; flex-shrink:0; }
+        .why-us-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin:50px 0; text-align:center; }
+        .why-us-card { padding:30px 20px; background:var(--card-bg); border:1px solid var(--border-color); border-radius:14px; }
+        .why-us-card i { font-size:2rem; color:var(--accent); margin-bottom:14px; }
+        .why-us-card h4 { font-size:1rem; font-weight:700; margin-bottom:8px; }
+        .why-us-card p { font-size:0.85rem; color:var(--text-secondary); }
+        .pricing-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:50px 0; }
+        .price-card { background:var(--card-bg); border:1px solid var(--border-color); border-radius:16px; padding:34px 28px; text-align:center; transition:all 0.3s; }
+        .price-card.featured { border-color:var(--accent); background:rgba(234,255,0,0.04); }
+        .price-card h3 { font-size:1.3rem; font-weight:800; margin-bottom:10px; }
+        .price-card .amount { font-size:2.5rem; font-weight:900; color:var(--accent); }
+        .price-card .amount span { font-size:1rem; font-weight:400; color:var(--text-secondary); }
+        .price-card ul { list-style:none; padding:0; margin:20px 0; display:flex; flex-direction:column; gap:10px; text-align:left; }
+        .price-card ul li { font-size:0.88rem; color:var(--text-secondary); display:flex; gap:8px; }
+        .price-card ul li::before { content:'✓'; color:var(--accent); flex-shrink:0; font-weight:700; }
+        .price-card a { display:block; background:var(--accent); color:#000; text-decoration:none; padding:14px; border-radius:100px; font-weight:700; margin-top:10px; transition:all 0.3s; }
+        .price-card.featured a:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(234,255,0,0.3); }
+        .contact-form { background:var(--card-bg); border:1px solid var(--border-color); border-radius:20px; padding:50px; max-width:700px; margin:0 auto; }
+        .form-group { margin-bottom:20px; }
+        .form-group label { display:block; font-size:0.9rem; font-weight:600; margin-bottom:8px; color:rgba(255,255,255,0.8); }
+        .form-group input,.form-group select,.form-group textarea { width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--border-color); border-radius:10px; padding:12px 16px; color:#fff; font-family:'Outfit',sans-serif; font-size:0.95rem; outline:none; transition:border-color 0.3s; }
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--accent); }
+        .form-group select option { background:#0d1117; }
+        .form-group textarea { resize:vertical; min-height:120px; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        .submit-btn { width:100%; background:var(--accent); color:#000; border:none; padding:16px; border-radius:100px; font-size:1.1rem; font-weight:700; cursor:pointer; transition:all 0.3s; font-family:'Outfit',sans-serif; }
+        .submit-btn:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(234,255,0,0.3); }
+        @media (max-width:992px) { .page-hero h1{font-size:2.4rem;} .services-grid{grid-template-columns:1fr 1fr;} .why-us-grid{grid-template-columns:1fr 1fr;} .pricing-cards{grid-template-columns:1fr;} }
+        @media (max-width:600px) { .page-hero h1{font-size:1.9rem;} .services-grid{grid-template-columns:1fr;} .why-us-grid{grid-template-columns:1fr 1fr;} .form-row{grid-template-columns:1fr;} .contact-form{padding:30px 20px;} }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Code Your Future</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#curriculum">Curriculum</a>
+                <a href="freelance.html" class="btn-primary">Get a Quote</a>
+            </div>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div>
+            <span style="display:inline-block; background:rgba(234,255,0,0.1); border:1px solid rgba(234,255,0,0.3); color:var(--accent); padding:8px 20px; border-radius:100px; font-size:0.9rem; font-weight:600; margin-bottom:20px;">FREELANCE &amp; PROJECT-BASED WORK</span>
+            <h1>Data Science Projects<br><span style="color:var(--accent);">Done for You — Fast &amp; Reliable</span></h1>
+            <p>Need a dashboard, a predictive model, or a data pipeline? We build production-ready data science solutions for businesses of all sizes.</p>
+            <a href="#project-form" style="display:inline-block; background:var(--accent); color:#000; text-decoration:none; padding:16px 40px; border-radius:100px; font-size:1.1rem; font-weight:700; margin-right:14px;">Get a Quote &rarr;</a>
+            <a href="https://wa.me/917010948304?text=Hi!%20I%20have%20a%20data%20science%20project%20I%20need%20help%20with." target="_blank" style="display:inline-block; background:#25D366; color:#fff; text-decoration:none; padding:16px 30px; border-radius:100px; font-size:1rem; font-weight:700;"><i class="fab fa-whatsapp"></i> WhatsApp us</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section style="padding:100px 5%; background:var(--bg-color);">
+        <div class="container">
+            <h2 class="section-title text-center">What We Build for You</h2>
+            <p class="section-subtitle text-center" style="margin:0 auto 50px; max-width:600px;">From quick dashboards to full ML pipelines — we deliver clean, documented, and maintainable solutions.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Power BI Dashboards</h3>
+                    <p>Interactive, drill-through dashboards with KPIs, slicers, and real-time data connections — built to impress your leadership.</p>
+                    <ul>
+                        <li>Sales &amp; Revenue dashboards</li>
+                        <li>HR &amp; Operations analytics</li>
+                        <li>Finance &amp; Budget tracking</li>
+                        <li>Custom DAX measures</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-database"></i></div>
+                    <h3>SQL &amp; Data Engineering</h3>
+                    <p>Clean, optimised database design and complex reporting queries for your data warehouse or transactional database.</p>
+                    <ul>
+                        <li>Database schema design</li>
+                        <li>Stored procedures &amp; views</li>
+                        <li>ETL pipeline setup</li>
+                        <li>Performance optimisation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                    <h3>ML &amp; Predictive Models</h3>
+                    <p>End-to-end machine learning models for forecasting, classification, and anomaly detection — production-ready and explainable.</p>
+                    <ul>
+                        <li>Sales &amp; demand forecasting</li>
+                        <li>Customer churn prediction</li>
+                        <li>Fraud detection systems</li>
+                        <li>Recommendation engines</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fab fa-python"></i></div>
+                    <h3>Python Automation &amp; EDA</h3>
+                    <p>Automate repetitive data tasks, generate scheduled reports, and get deep exploratory insights from your raw data.</p>
+                    <ul>
+                        <li>Data cleaning scripts</li>
+                        <li>Automated reporting</li>
+                        <li>Exploratory Data Analysis</li>
+                        <li>PDF &amp; Excel report generation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Deep Learning Solutions</h3>
+                    <p>Computer vision, NLP, and time series deep learning models trained on your data and deployed for real use.</p>
+                    <ul>
+                        <li>Image classification systems</li>
+                        <li>Document &amp; text analysis</li>
+                        <li>Time series forecasting (LSTM)</li>
+                        <li>Transfer learning fine-tuning</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Data Strategy &amp; Consulting</h3>
+                    <p>Not sure where to start with data? We audit your current data setup and define the right roadmap for your business.</p>
+                    <ul>
+                        <li>Data maturity assessment</li>
+                        <li>Tech stack recommendations</li>
+                        <li>KPI definition &amp; metrics</li>
+                        <li>Implementation roadmap</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Why us -->
+            <h2 class="section-title text-center" style="margin-top:80px;">Why Work With Us</h2>
+            <div class="why-us-grid">
+                <div class="why-us-card"><i class="fas fa-graduation-cap"></i><h4>Academic Rigour</h4><p>MSc Mathematics + MS CS (Data Science) — we understand the math, not just the tools.</p></div>
+                <div class="why-us-card"><i class="fas fa-clock"></i><h4>Fast Turnaround</h4><p>Most projects delivered in 5–14 business days with daily progress updates.</p></div>
+                <div class="why-us-card"><i class="fas fa-code"></i><h4>Clean, Documented Code</h4><p>Every deliverable is well-commented and handed over with full documentation.</p></div>
+                <div class="why-us-card"><i class="fas fa-headset"></i><h4>Post-Delivery Support</h4><p>30 days of free support after delivery — we're not gone once we ship.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Quote Form -->
+    <section id="project-form" style="padding:100px 5%; background:#030408; border-top:1px solid var(--border-color);">
+        <div class="container">
+            <h2 class="section-title text-center">Describe Your Project</h2>
+            <p class="section-subtitle text-center" style="margin:0 auto 50px; max-width:550px;">Tell us what you need and we'll get back with a proposal within 24 hours.</p>
+            <div class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Company / Organisation</label>
+                        <input type="text" placeholder="Company name (or Individual)">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="you@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Type of Project</label>
+                    <select>
+                        <option>Power BI Dashboard</option>
+                        <option>SQL / Database</option>
+                        <option>ML / Predictive Model</option>
+                        <option>Python Automation / EDA</option>
+                        <option>Deep Learning</option>
+                        <option>Data Strategy Consulting</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <select>
+                        <option>₹10,000 – ₹25,000</option>
+                        <option>₹25,000 – ₹75,000</option>
+                        <option>₹75,000 – ₹1,50,000</option>
+                        <option>₹1,50,000+</option>
+                        <option>Let's discuss</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Describe Your Project</label>
+                    <textarea placeholder="What data do you have? What problem are you trying to solve? Any specific tools or formats needed?"></textarea>
+                </div>
+                <a href="https://wa.me/917010948304?text=Hi%20Naveen!%20I%20have%20a%20freelance%20data%20science%20project%20I%20need%20help%20with." target="_blank">
+                    <button class="submit-btn"><i class="fab fa-whatsapp"></i> &nbsp;Send via WhatsApp</button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding:40px 5%; background:#030408; border-top:1px solid rgba(255,255,255,0.05); text-align:center; color:rgba(255,255,255,0.3); font-size:0.9rem;">
+        &copy; 2026 Code Your Future. All rights reserved. &nbsp;|&nbsp; <a href="index.html" style="color:var(--accent); text-decoration:none;">Back to Home</a>
+    </footer>
+
+    <a href="https://wa.me/917010948304?text=Hi!%20I%20have%20a%20freelance%20data%20science%20project." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+        <span class="wa-tooltip">Discuss Project</span>
+    </a>
+</body>
+</html>
