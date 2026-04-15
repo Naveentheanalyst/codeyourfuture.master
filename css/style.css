@@ -24,6 +24,7 @@ html {
 
 body {
     background: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.05), transparent 50%), var(--bg-color);
+    overflow-x: hidden;
 }
 
 /* Neural network canvas background */
@@ -692,11 +693,15 @@ body {
     /* Navbar */
     .nav-links { display: none; }
     .hamburger { display: block; color: var(--text-primary); }
+    .navbar { border-radius: 16px; padding: 12px 20px; top: 10px; }
+    .logo { font-size: 1.2rem; }
 
     /* Hero */
     .hero-title { font-size: 3rem; }
     .hero-subtitle { font-size: 1rem; padding: 0 10px; }
     .btn-large { padding: 14px 28px; font-size: 1rem; }
+    .hero-cards-container { width: 100%; }
+    .depth-blob { display: none; }
 
     /* Experience section */
     .exp-title { font-size: 2.2rem; }
@@ -739,14 +744,21 @@ body {
     .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
     .pricing-title { font-size: 2.5rem; }
 
+    /* Hiring card — override inline padding */
+    .hiring-card { padding: 30px 20px !important; }
+    .hiring-marquee-container { gap: 20px !important; }
+
     /* Flow diagram */
     .flow-diagram { flex-direction: column; height: auto; gap: 30px; margin-top: 60px; }
     .flow-svg { display: none; }
     .flow-middle { gap: 15px; }
 
     /* Section titles */
-    .section-title { font-size: 2.2rem; }
+    .section-title { font-size: 2.2rem !important; }
     .exp-title { font-size: 2rem; }
+
+    /* Logos grid */
+    .logos-grid { gap: 15px 20px; }
 
     /* Footer */
     .footer-content { flex-direction: column; }
@@ -761,12 +773,14 @@ body {
 
 @media (max-width: 480px) {
     /* Hero */
-    .hero-title { font-size: 2.2rem; }
+    .hero-title { font-size: 2rem; line-height: 1.2; }
     .hero-badge { font-size: 0.8rem; }
+    .hero { padding: 120px 5% 40px; }
 
     /* Cards in marquee */
-    .card { width: 220px; height: 180px; }
-    .card-icon { font-size: 3.5rem; }
+    .card { width: 180px; height: 160px; }
+    .card-icon { font-size: 3rem; }
+    .card-title { font-size: 0.9rem; }
 
     /* Tabs scrollable on small screens */
     .curriculum-tabs {
@@ -784,19 +798,53 @@ body {
     .stat-bubble { width: 95%; max-width: none; }
 
     /* Pricing */
-    .price-amount { font-size: 2.2rem; }
-    .pricing-title { font-size: 2rem; }
+    .price-amount { font-size: 1.8rem; }
+    .pricing-title { font-size: 1.8rem; }
+    .price-card { padding: 28px 20px; }
 
     /* Join section */
-    #join h2 { font-size: 2rem !important; }
+    #join h2 { font-size: 1.8rem !important; }
     #join a { padding: 15px 25px !important; font-size: 1rem !important; }
 
     /* Teach box */
     .teach-box { padding: 25px 20px; }
     .teach-title { font-size: 1.4rem; }
 
+    /* Testimonials — smaller cards on phones */
+    .testimonial-card { min-width: 290px; max-width: 290px; padding: 20px; }
+
+    /* Success stories heading */
+    .success-title { font-size: 1.8rem; }
+    .success-subtitle { font-size: 0.95rem; }
+
+    /* Company logo marquee */
+    .color-logo { padding: 10px 16px !important; font-size: 1.1rem !important; }
+    .text-logo { padding: 10px 16px; font-size: 1.1rem; }
+    .hiring-logos-set { gap: 12px; }
+    .hiring-card { padding: 20px 12px !important; }
+    .hiring-marquee-container { gap: 16px !important; }
+
+    /* Logos grid */
+    .logos-grid { gap: 12px 16px; }
+
+    /* Section title override */
+    .section-title { font-size: 1.8rem !important; }
+
+    /* Image badge — smaller on phone */
+    .image-badge { padding: 12px 16px !important; }
+    .image-badge div:first-child { font-size: 1.5rem !important; }
+    .image-badge div:last-child { font-size: 0.8rem !important; }
+
+    /* FAQ */
+    .faq-item summary { font-size: 0.9rem; padding: 16px; }
+
     /* Footer */
     .footer-links-container { flex-direction: column; }
+
+    /* General section padding reduction */
+    .why-cohort { padding: 60px 5%; }
+    .pricing { padding: 60px 5%; }
+    .faq-section { padding: 60px 5%; }
 }
 
 /* Floating Student Badge */
