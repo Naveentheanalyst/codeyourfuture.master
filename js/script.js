@@ -109,7 +109,7 @@ function switchTab(btn, tabId) {
                 const a = nodes[i], b = nodes[j];
                 const d = Math.hypot(a.x - b.x, a.y - b.y);
                 if (d < CONN_DIST) {
-                    const alp = (1 - d / CONN_DIST) * 0.22;
+                    const alp = (1 - d / CONN_DIST) * 0.42;
                     const g = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
                     g.addColorStop(0, a.col + alp + ')');
                     g.addColorStop(1, b.col + alp + ')');
@@ -124,7 +124,7 @@ function switchTab(btn, tabId) {
             n.phase += 0.007;
             const glow = 0.5 + 0.5 * Math.sin(n.phase);
             const rg = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 5);
-            rg.addColorStop(0, n.col + glow * 0.4 + ')');
+            rg.addColorStop(0, n.col + glow * 0.7 + ')');
             rg.addColorStop(1, n.col + '0)');
             ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 5, 0, Math.PI * 2);
             ctx.fillStyle = rg; ctx.fill();
@@ -154,7 +154,7 @@ function switchTab(btn, tabId) {
         const ox = W * 0.02, oy = H - qH - H * 0.04;
 
         // Axis labels
-        ctx.fillStyle = C.white + '0.18)';
+        ctx.fillStyle = C.white + '0.45)';
         ctx.font = `${Math.max(10, W * 0.011)}px monospace`;
         ctx.fillText('J(θ) = θ²', ox + 4, oy + 14);
         ctx.fillText('Gradient Descent', ox + 4, oy + 28);
@@ -165,7 +165,7 @@ function switchTab(btn, tabId) {
             const x = gdX(t), y = gdY(jFn(t));
             t === -3.5 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = C.accent + '0.3)'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.strokeStyle = C.accent + '0.55)'; ctx.lineWidth = 1.5; ctx.stroke();
 
         // Trail
         if (gdHistory.length > 1) {
@@ -175,7 +175,7 @@ function switchTab(btn, tabId) {
                     ? ctx.moveTo(gdX(th), gdY(jFn(th)))
                     : ctx.lineTo(gdX(th), gdY(jFn(th)));
             });
-            ctx.strokeStyle = C.accent + '0.1)'; ctx.lineWidth = 1; ctx.stroke();
+            ctx.strokeStyle = C.accent + '0.25)'; ctx.lineWidth = 1; ctx.stroke();
         }
 
         // Gradient arrow
@@ -183,13 +183,13 @@ function switchTab(btn, tabId) {
         const x1 = gdX(theta), y1 = gdY(jFn(theta));
         const x2 = x1 - g * 18, y2 = y1 + g * g * 2.5;
         ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-        ctx.strokeStyle = C.cyan + '0.35)'; ctx.lineWidth = 1.2; ctx.stroke();
+        ctx.strokeStyle = C.cyan + '0.6)'; ctx.lineWidth = 1.2; ctx.stroke();
         const ang = Math.atan2(y2 - y1, x2 - x1);
         ctx.beginPath();
         ctx.moveTo(x2, y2);
         ctx.lineTo(x2 - 6 * Math.cos(ang - 0.4), y2 - 6 * Math.sin(ang - 0.4));
         ctx.lineTo(x2 - 6 * Math.cos(ang + 0.4), y2 - 6 * Math.sin(ang + 0.4));
-        ctx.closePath(); ctx.fillStyle = C.cyan + '0.35)'; ctx.fill();
+        ctx.closePath(); ctx.fillStyle = C.cyan + '0.6)'; ctx.fill();
 
         // Ball
         const bx = gdX(theta), by = gdY(jFn(theta));
@@ -201,7 +201,7 @@ function switchTab(btn, tabId) {
         ctx.fillStyle = C.accent + '1)'; ctx.fill();
 
         // Live readout
-        ctx.fillStyle = C.white + '0.12)';
+        ctx.fillStyle = C.white + '0.35)';
         ctx.font = `${Math.max(9, W * 0.009)}px monospace`;
         ctx.fillText(`θ=${theta.toFixed(3)}  ∇=${dJ(theta).toFixed(3)}`, ox + 4, H - H * 0.015);
 
@@ -235,7 +235,7 @@ function switchTab(btn, tabId) {
 
     function drawLR() {
         // Labels
-        ctx.fillStyle = C.white + '0.18)';
+        ctx.fillStyle = C.white + '0.45)';
         ctx.font = `${Math.max(10, W * 0.011)}px monospace`;
         ctx.fillText('ŷ = mx + c', W * 0.668, H - H * 0.38);
         ctx.fillText('Linear Regression', W * 0.668, H - H * 0.365);
@@ -246,21 +246,21 @@ function switchTab(btn, tabId) {
             ctx.beginPath();
             ctx.moveTo(lrCx(p.x), lrCy(p.y));
             ctx.lineTo(lrCx(p.x), lrCy(predY));
-            ctx.strokeStyle = C.purple + '0.18)'; ctx.lineWidth = 0.9; ctx.stroke();
+            ctx.strokeStyle = C.purple + '0.4)'; ctx.lineWidth = 0.9; ctx.stroke();
 
             ctx.beginPath();
             ctx.arc(lrCx(p.x), lrCy(p.y), 2.8, 0, Math.PI * 2);
-            ctx.fillStyle = C.cyan + '0.55)'; ctx.fill();
+            ctx.fillStyle = C.cyan + '0.8)'; ctx.fill();
         });
 
         // Regression line
         ctx.beginPath();
         ctx.moveTo(lrCx(0), lrCy(lrM * 0 + lrB));
         ctx.lineTo(lrCx(1), lrCy(lrM * 1 + lrB));
-        ctx.strokeStyle = C.accent + '0.45)'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.strokeStyle = C.accent + '0.7)'; ctx.lineWidth = 2; ctx.stroke();
 
         // Live values
-        ctx.fillStyle = C.white + '0.12)';
+        ctx.fillStyle = C.white + '0.35)';
         ctx.font = `${Math.max(9, W * 0.009)}px monospace`;
         ctx.fillText(`m=${lrM.toFixed(2)}  c=${lrB.toFixed(2)}`, W * 0.668, H - H * 0.018);
 
@@ -288,7 +288,7 @@ function switchTab(btn, tabId) {
         if (bayesFade >= 1) { bayesFade = 1; bayesDir = -1; }
         if (bayesFade <= 0) { bayesFade = 0; bayesDir = 1; }
 
-        const alpha = bayesFade * 0.28;
+        const alpha = bayesFade * 0.55;
         const fs = Math.max(11, W * 0.012);
         const ox = W * 0.62, oy = H * 0.07;
 
@@ -338,7 +338,7 @@ function switchTab(btn, tabId) {
     function drawEquations() {
         equations.forEach(eq => {
             eq.phase += eq.speed * 55;
-            const alpha = (0.5 + 0.5 * Math.sin(eq.phase)) * 0.15;
+            const alpha = (0.5 + 0.5 * Math.sin(eq.phase)) * 0.32;
             ctx.fillStyle = C.white + alpha + ')';
             ctx.font = `${Math.max(10, W * 0.011)}px monospace`;
             ctx.fillText(eq.text, eq.x * W, eq.y * H);
