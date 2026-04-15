@@ -203,6 +203,108 @@ body {
     text-align: center;
 }
 
+/* Dark hero overlay */
+.hero-dark-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,0,0,0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(0,0,0,0.85) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(2,4,10,0.92) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Shuttle animation */
+.shuttle-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.shuttle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+}
+
+.shuttle i {
+    color: #fff;
+    transform: rotate(-45deg);
+}
+
+/* Shuttle trail */
+.shuttle::before {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to left, rgba(234,255,0,0.7), transparent);
+    border-radius: 2px;
+    transform: translateX(-4px);
+}
+
+/* Individual shuttle paths */
+.shuttle-1 {
+    top: 15%;
+    left: -120px;
+    font-size: 1.4rem;
+    animation: shuttle-fly 8s ease-in 2s infinite;
+}
+.shuttle-1 i { color: var(--accent); }
+.shuttle-1::before { background: linear-gradient(to left, rgba(234,255,0,0.6), transparent); }
+
+.shuttle-2 {
+    top: 40%;
+    left: -120px;
+    font-size: 1rem;
+    animation: shuttle-fly 11s ease-in 5s infinite;
+    opacity: 0;
+}
+.shuttle-2 i { color: #00f0ff; }
+.shuttle-2::before { background: linear-gradient(to left, rgba(0,240,255,0.5), transparent); width: 60px; }
+
+.shuttle-3 {
+    top: 65%;
+    left: -120px;
+    font-size: 1.8rem;
+    animation: shuttle-fly 14s ease-in 0s infinite;
+    opacity: 0;
+}
+.shuttle-3 i { color: #a855f7; }
+.shuttle-3::before { background: linear-gradient(to left, rgba(168,85,247,0.5), transparent); width: 100px; }
+
+.shuttle-4 {
+    top: 28%;
+    left: -120px;
+    font-size: 0.85rem;
+    animation: shuttle-fly 9s ease-in 7s infinite;
+    opacity: 0;
+}
+.shuttle-4 i { color: rgba(255,255,255,0.5); }
+.shuttle-4::before { background: linear-gradient(to left, rgba(255,255,255,0.3), transparent); width: 50px; }
+
+.shuttle-5 {
+    top: 78%;
+    left: -120px;
+    font-size: 1.2rem;
+    animation: shuttle-fly 12s ease-in 3.5s infinite;
+    opacity: 0;
+}
+.shuttle-5 i { color: var(--accent); }
+.shuttle-5::before { background: linear-gradient(to left, rgba(234,255,0,0.4), transparent); width: 70px; }
+
+@keyframes shuttle-fly {
+    0%   { transform: translateX(0) translateY(0);   opacity: 0; }
+    5%   { opacity: 1; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateX(120vw) translateY(-30px); opacity: 0; }
+}
+
 .hero-content {
     width: 100%;
     z-index: 2;
